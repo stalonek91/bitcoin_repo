@@ -1,6 +1,7 @@
 import requests
 from prettytable import PrettyTable
 import pandas as pd
+#KWOKA!!!
 
 
 url = "https://coinranking1.p.rapidapi.com/coins"
