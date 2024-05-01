@@ -35,10 +35,6 @@ def iter_dict(response: dict, looked_key: str) -> dict:
             
 
 coins_data = iter_dict(json_response, 'coins')
-# print(coins_data[0])
-print(type(coins_data))
-
-
 needed_keys = ['symbol', 'name', 'price', 'change']
 
 
@@ -64,29 +60,33 @@ def get_values(coins_list: list, list_of_keys: list) -> list:
 
 filtered_coins = get_values(coins_data, needed_keys)
 list_of_my_coins = ['BTC', 'DOGE', 'PEPE']
-my_dict = {}
 
-# {'symbol': 'BTC', 'name': 'Bitcoin', 'price': '63005.54907812025', 'change': '-2.33'}
 
-new_key = None
-key_to_remove = None
+def new_dict_creation() -> list:
 
-for k, v in filtered_coins[0].copy().items():
-    if v == 'BTC':
-        new_key = v
-        print(f'new_key: {new_key}')
-        key_to_remove = k
-        print(f'key_to_remove: {key_to_remove}')
-        break
+    """create new dictionary where coin is a main key
 
-if new_key:
-    del filtered_coins[0][key_to_remove]
+    Returns:
+        _type_: list with dictionaries
+    """
 
-new_dict = {new_key: filtered_coins[0]}
-
-for k,v in new_dict.items():
-    print(k, v)
+    new_list_with_dict = []
     
+    for coin in filtered_coins:
+        new_key = coin.pop('symbol', None)
+        
+        if new_key:
+            my_dict = {}
+            my_dict[new_key] = coin
+            new_list_with_dict.append(my_dict)
+    
+    return new_list_with_dict
+
+
+print(new_dict_creation())
+
+
+
     
 
 
