@@ -108,9 +108,24 @@ def display_table(data: list) -> None:
     print(table)
 
 
-
 content_to_display = new_dict_creation()
-display_table(content_to_display)
+
+
+def create_df(data: list) -> pd.DataFrame:
+
+    flattened_data = []
+    for item in data:
+        for symbol, details in item.items():
+            details['symbol'] = symbol
+            flattened_data.append(details)
+
+    df = pd.DataFrame(flattened_data)
+    return df
+
+pandas_df = create_df(content_to_display)
+print(pandas_df)
+pandas_df.sort_values(by='price', ascending=False, inplace=True)
+print(pandas_df)
 
 
 
