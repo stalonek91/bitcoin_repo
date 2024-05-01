@@ -1,4 +1,7 @@
 import requests
+from prettytable import PrettyTable
+import pandas as pd
+
 
 url = "https://coinranking1.p.rapidapi.com/coins"
 
@@ -83,7 +86,31 @@ def new_dict_creation() -> list:
     return new_list_with_dict
 
 
-print(new_dict_creation())
+def display_table(data: list) -> None:
+
+    """
+    this is a function that uses external library to display list of dictionaries
+    in ascii format
+    """
+
+    
+    table = PrettyTable()
+    columns = ["Coin", "Name", "Value", "Change"]
+    table.field_names = columns
+
+    for entry in data:
+        for key, sub_dict in entry.items():
+            row = [key]
+            row.extend(sub_dict.values())
+            table.add_row(row)
+    
+    print(table)
+
+
+
+content_to_display = new_dict_creation()
+display_table(content_to_display)
+
 
 
 
