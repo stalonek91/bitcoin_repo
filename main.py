@@ -3,6 +3,8 @@ from prettytable import PrettyTable
 import pandas as pd
 #KWOKA!!!
 
+#TODO: Dodac fast api
+
 
 url = "https://coinranking1.p.rapidapi.com/coins"
 
