@@ -4,6 +4,7 @@ import pandas as pd
 #KWOKA!!!
 
 #TODO: Dodac fast api
+#TODO: Include sqlalchemy to track price history
 
 
 url = "https://coinranking1.p.rapidapi.com/coins"

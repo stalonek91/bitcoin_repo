@@ -1,7 +1,7 @@
 import requests
+import logging
 
 class APIConnection():
-
 
 
     def __init__(self) -> None:
